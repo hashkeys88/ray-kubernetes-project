@@ -1,0 +1,82 @@
+# Ray on Kubernetes Project .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Kubernetes
+*.kubeconfig
+kubeconfig
+
+# Ray
+ray_tune_results/
+ray_results/
+/tmp/ray/
+
+# Logs
+*.log
+logs/
+
+# Data
+data/
+*.csv
+*.json
+*.pkl
+*.h5
+*.hdf5
+
+# Models
+models/
+*.pth
+*.pt
+*.ckpt
+
+# Monitoring
+prometheus_data/
+grafana_data/
+
+# Temporary files
+*.tmp
+*.temp
