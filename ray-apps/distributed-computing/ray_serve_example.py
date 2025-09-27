@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Ray Serve Example for Model Serving
-Inspired by Uber's Ray on Kubernetes setup
+Demonstrates distributed model serving on Ray clusters
 """
 
 import ray

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Distributed Training Example with Ray
-Inspired by Uber's Ray on Kubernetes setup
+Demonstrates distributed machine learning training on Ray clusters
 """
 
 import ray

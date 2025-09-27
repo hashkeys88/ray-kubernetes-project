@@ -11,6 +11,19 @@ numpy==1.24.3
 pandas==2.0.3
 scikit-learn==1.3.0
 
+# AI File Understanding Dependencies
+transformers==4.35.0
+sentence-transformers==2.2.2
+openai==1.3.0
+pydantic==2.5.0
+
+# File Processing
+PyPDF2==3.0.1
+python-docx==0.8.11
+pandoc==1.0.0
+ffmpeg-python==0.2.0
+whisper==1.1.10
+
 # Monitoring and Observability
 prometheus-client==0.17.1
 psutil==5.9.5

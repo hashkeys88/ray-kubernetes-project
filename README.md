@@ -1,6 +1,6 @@
 # Ray on Kubernetes Project
 
-This project demonstrates how to deploy and manage Ray clusters on Kubernetes, inspired by Uber's journey to Ray on Kubernetes. It provides a complete setup for running distributed machine learning workloads at scale.
+This project demonstrates how to deploy and manage Ray clusters on Kubernetes for running distributed machine learning workloads at scale.
 
 ## Architecture Overview
 

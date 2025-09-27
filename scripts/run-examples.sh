@@ -99,6 +99,40 @@ exec(open('/tmp/ray_serve_example.py').read())
     log_success "Ray Serve example completed"
 }
 
+run_ai_file_understanding() {
+    log_info "Running AI File Understanding example..."
+    
+    # Create a temporary pod to run the AI file understanding script
+    kubectl run ray-ai-files-$(date +%s) \
+        --image=rayproject/ray:2.8.0-py310 \
+        --rm -i --restart=Never \
+        --namespace=$NAMESPACE \
+        --command -- python3 -c "
+import sys
+sys.path.append('/tmp')
+exec(open('/tmp/ai_file_api.py').read())
+" || log_warning "AI File Understanding example completed with warnings"
+    
+    log_success "AI File Understanding example completed"
+}
+
+run_ai_examples() {
+    log_info "Running AI File Understanding examples..."
+    
+    # Create a temporary pod to run the examples
+    kubectl run ray-ai-examples-$(date +%s) \
+        --image=rayproject/ray:2.8.0-py310 \
+        --rm -i --restart=Never \
+        --namespace=$NAMESPACE \
+        --command -- python3 -c "
+import sys
+sys.path.append('/tmp')
+exec(open('/tmp/example_usage.py').read())
+" || log_warning "AI File Understanding examples completed with warnings"
+    
+    log_success "AI File Understanding examples completed"
+}
+
 run_custom_script() {
     local script_path="$1"
     
@@ -175,6 +209,15 @@ main() {
             run_distributed_training
             run_hyperparameter_tuning
             run_ray_serve
+            run_ai_file_understanding
+            ;;
+        "ai-files")
+            check_ray_cluster
+            run_ai_file_understanding
+            ;;
+        "ai-examples")
+            check_ray_cluster
+            run_ai_examples
             ;;
         "custom")
             if [ -z "$2" ]; then
@@ -191,19 +234,23 @@ main() {
             show_monitoring
             ;;
         "help"|*)
-            echo "Usage: $0 {training|tuning|serve|all|custom <script>|dashboard|monitoring}"
+            echo "Usage: $0 {training|tuning|serve|ai-files|ai-examples|all|custom <script>|dashboard|monitoring}"
             echo ""
             echo "Commands:"
-            echo "  training   - Run distributed training example"
-            echo "  tuning     - Run hyperparameter tuning example"
-            echo "  serve      - Run Ray Serve example"
-            echo "  all        - Run all examples"
-            echo "  custom     - Run a custom script"
-            echo "  dashboard  - Show Ray Dashboard access info"
-            echo "  monitoring - Show monitoring access info"
+            echo "  training     - Run distributed training example"
+            echo "  tuning       - Run hyperparameter tuning example"
+            echo "  serve        - Run Ray Serve example"
+            echo "  ai-files     - Run AI File Understanding API example"
+            echo "  ai-examples  - Run AI File Understanding examples"
+            echo "  all          - Run all examples"
+            echo "  custom       - Run a custom script"
+            echo "  dashboard    - Show Ray Dashboard access info"
+            echo "  monitoring   - Show monitoring access info"
             echo ""
             echo "Examples:"
             echo "  $0 training"
+            echo "  $0 ai-files"
+            echo "  $0 ai-examples"
             echo "  $0 custom /path/to/your/script.py"
             echo "  $0 dashboard"
             exit 1

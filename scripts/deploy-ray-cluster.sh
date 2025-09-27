@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Ray on Kubernetes Deployment Script
-# Inspired by Uber's Ray on Kubernetes setup
+# Complete deployment script for Ray clusters on Kubernetes
 
 set -e
 

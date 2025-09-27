@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Ray Tune Hyperparameter Optimization Example
-Inspired by Uber's Ray on Kubernetes setup
+Demonstrates distributed hyperparameter optimization on Ray clusters
 """
 
 import ray
